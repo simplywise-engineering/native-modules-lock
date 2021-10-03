@@ -1,43 +1,66 @@
-# typescript-cli-starter
+# native-modules-lock
 
-A simple and zero-opinion typescript starter template for building cross-platform command line applications.
-
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/khalidx/typescript-cli-starter.svg?style=flat-square)
-
-![GitHub](https://img.shields.io/github/license/khalidx/typescript-cli-starter.svg?style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/khalidx/typescript-cli-starter.svg?style=flat-square)
-![GitHub top language](https://img.shields.io/github/languages/top/khalidx/typescript-cli-starter.svg?style=flat-square)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/khalidx/typescript-cli-starter.svg?style=flat-square)
-
-Includes:
-
-- [TypeScript](https://www.typescriptlang.org/), for writing good code
-- [Ava](https://www.npmjs.com/package/ava), for writing good tests
-- [Commander](https://www.npmjs.com/package/commander), for building CLI applications
-- [Pkg](https://www.npmjs.com/package/pkg), for building cross-platform native executables
-
-Your application will be installable from `npm` or by sharing your native executables.
+Synchronize native modules state by computing a digest of the `ios/` and `android/` directories in a React Native project.
 
 ## Usage
 
+```bash
+Usage: native-modules-lock [options] [command]
+
+Options:
+  -V, --version          output the version number
+  -h, --help             display help for command
+
+Commands:
+  check [options]        check the current state of the lockfile
+  write-locks [options]  regenerate the lockfile
+  help [command]         display help for command
+```
+
+### Commands
+
+#### `check`
+```bash
+Usage: native-modules-lock check [options]
+
+check the current state of the lockfile
+
+Options:
+  -f, --lockfile <file>  path to the lockfile (default: "native-modules.lock")
+  -h, --help             display help for command
+```
+
+#### `write-locks`
+```bash
+Usage: native-modules-lock write-locks [options]
+
+regenerate the lockfile
+
+Options:
+  -f, --lockfile <file>  path to the lockfile (default: "native-modules.lock")
+  -h, --help             display help for command
+```
+
+
+## Development
+
 ### **dev**
 
-`npm run dev`
+`yarn dev`
 
 Runs the CLI application.
 
-You can pass arguments to your application by running `npm run dev -- --your-argument`. The extra `--` is so that your arguments are passed to your CLI application, and not `npm`.
+You can pass arguments to the application by running `yarn dev -- --your-argument`. The extra `--` is so that your arguments are passed to your CLI application, and not `npm`.
 
 ### **clean**
 
-`npm run clean`
+`yarn clean`
 
 Removes any built code and any built executables.
 
 ### **build**
 
-`npm run build`
+`yarn build`
 
 Cleans, then builds the TypeScript code.
 
@@ -45,13 +68,13 @@ Your built code will be in the `./dist/` directory.
 
 ### **test**
 
-`npm run test`
+`yarn test`
 
 Cleans, then builds, and tests the built code.
 
 ### **bundle**
 
-`npm run bundle`
+`yarn bundle`
 
 Cleans, then builds, then bundles into native executables for Windows, Mac, and Linux.
 
