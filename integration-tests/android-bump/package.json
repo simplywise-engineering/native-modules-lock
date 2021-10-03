@@ -1,0 +1,16 @@
+{
+    "name": "android-bump",
+    "version": "1.0.0",
+    "description": "integration test for native-modules-lock",
+    "main": "index.js",
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "left-pad": "^1.3.0",
+        "lodash": "^4.17.21",
+        "replace": "^1.2.0"
+    },
+    "devDependencies": {
+        "native-modules-lock": "../../"
+    }
+}
