@@ -1,0 +1,39 @@
+{
+  "name": "native-modules-lock",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Synchronizes native module state by computing a digest of the ios/ and android/ directories",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "bin": "./dist/cli.js",
+  "files": [
+    "dist/**/*",
+    "!dist/**/*.test.js"
+  ],
+  "scripts": {
+    "dev": "ts-node ./src/cli.ts",
+    "clean": "rimraf ./dist/ ./exec/",
+    "build": "npm run clean && tsc",
+    "test": "npm run build && ava --verbose",
+    "bundle": "npm run build && pkg . --out-dir ./exec/"
+  },
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/fs-extra": "^9.0.13",
+    "@types/is-ci": "^3.0.0",
+    "@types/minimist": "^1.2.2",
+    "ava": "^3.15.0",
+    "pkg": "^4.4.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "commander": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "is-ci": "^3.0.0",
+    "minimist": "^1.2.5"
+  }
+}
