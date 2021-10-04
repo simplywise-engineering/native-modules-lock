@@ -1,7 +1,7 @@
 {
   "name": "native-modules-lock",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Synchronizes native module state by computing a digest of the ios/ and android/ directories",
   "keywords": [],
   "license": "MIT",
@@ -17,7 +17,8 @@
     "build": "npm run clean && tsc",
     "test": "npm run build && ava --verbose",
     "lint": "eslint \"**/*.{js,ts}\"",
-    "bundle": "npm run build && pkg . --out-dir ./exec/"
+    "bundle": "npm run build && pkg . --out-dir ./exec/",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -37,7 +38,8 @@
     "prettier": "^2.4.1",
     "rimraf": "^2.6.3",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "semantic-release": "^18.0.0"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
@@ -84,5 +86,12 @@
   "eslintIgnore": [
     "node_modules/",
     "lib/"
-  ]
+  ],
+  "release": {
+    "branches": ["main"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simplywise-engineering/native-modules-lock.git"
+  }
 }

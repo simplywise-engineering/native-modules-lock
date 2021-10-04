@@ -1,0 +1,38 @@
+version: 2.1
+orbs:
+  nodejs: circleci/node@4.3.0
+commands:
+  check:
+    description: "Lint, build, and (optionally) release a new version"
+    steps:
+      - checkout
+      - restore_cache:
+          key: 1-node_modules-{{ checksum "yarn.lock" }}
+      - run:
+          command: yarn install -D
+          name: Install JS dependencies
+      - save_cache:
+          key: 1-node_modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          command: yarn lint
+          name: Lint package
+      - run:
+          command: yarn build
+          name: Build package
+      - run:
+          command: npx semantic-release
+          name: Release package
+jobs:
+  check:
+    executor:
+      name: nodejs/default
+      tag: 14.18.0
+    steps:
+    - check
+workflows:
+  version: 2.1
+  Check:
+    jobs:
+      - check
