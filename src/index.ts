@@ -5,7 +5,7 @@ import { readFile, writeFile } from './util/fs';
 
 const DEFAULT_LOCKFILE_NAME = 'native-modules.lock';
 
-export async function computeLocks() {
+async function computeLocks() {
     const ios = await computeDigest(`${appRootPath}/ios`);
     const android = await computeDigest(`${appRootPath}/android`);
     return [...ios, ...android];
