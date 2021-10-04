@@ -16,6 +16,9 @@ commands:
           paths:
             - node_modules
       - run:
+          command: yarn test
+          name: Test package
+      - run:
           command: yarn lint
           name: Lint package
       - run:
