@@ -1,6 +1,6 @@
 {
   "name": "native-modules-lock",
-  "private": true,
+  "private": false,
   "version": "0.0.0-development",
   "description": "Synchronizes native module state by computing a digest of the ios/ and android/ directories",
   "keywords": [],
