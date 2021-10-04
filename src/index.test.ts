@@ -46,6 +46,7 @@ test.serial('can detect unchanged state', async (t) => {
     console.log(`Setting workdir to ${testDir}`);
     process.chdir(testDir);
 
+    await exec('./runTest.sh');
     const { stdout, stderr } = await exec('npx native-modules-lock check');
     if (stderr != '') {
         t.fail(stderr);

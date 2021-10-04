@@ -15,7 +15,7 @@
     "dev": "ts-node ./src/cli.ts",
     "clean": "rimraf ./dist/ ./exec/",
     "build": "npm run clean && tsc",
-    "test": "npm run build && ava --verbose",
+    "test": "npm run build && ava --verbose --timeout=5m",
     "lint": "eslint \"**/*.{js,ts}\"",
     "bundle": "npm run build && pkg . --out-dir ./exec/",
     "semantic-release": "semantic-release"
@@ -83,10 +83,7 @@
       ]
     }
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
+  "eslintIgnore": ["node_modules/", "lib/", "dist/", "exec/"],
   "release": {
     "branches": ["main"]
   },
