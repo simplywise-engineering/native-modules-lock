@@ -4,7 +4,7 @@ Synchronize native modules state by computing a digest of the `ios/` and `androi
 
 ## Usage
 
-```bash
+```
 Usage: native-modules-lock [options] [command]
 
 Options:
@@ -20,7 +20,7 @@ Commands:
 ### Commands
 
 #### `check`
-```bash
+```
 Usage: native-modules-lock check [options]
 
 check the current state of the lockfile
@@ -31,7 +31,7 @@ Options:
 ```
 
 #### `write-locks`
-```bash
+```
 Usage: native-modules-lock write-locks [options]
 
 regenerate the lockfile

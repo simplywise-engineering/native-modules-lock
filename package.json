@@ -16,16 +16,25 @@
     "clean": "rimraf ./dist/ ./exec/",
     "build": "npm run clean && tsc",
     "test": "npm run build && ava --verbose",
+    "lint": "eslint \"**/*.{js,ts}\"",
     "bundle": "npm run build && pkg . --out-dir ./exec/"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
+    "@babel/preset-typescript": "^7.15.0",
     "@types/app-root-path": "^1.2.4",
     "@types/fs-extra": "^9.0.13",
     "@types/is-ci": "^3.0.0",
     "@types/md5": "^2.3.1",
     "@types/minimist": "^1.2.2",
     "ava": "^3.15.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
     "pkg": "^4.4.0",
+    "prettier": "^2.4.1",
     "rimraf": "^2.6.3",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
@@ -37,5 +46,43 @@
     "is-ci": "^3.0.0",
     "md5": "^2.3.0",
     "minimist": "^1.2.5"
-  }
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2017
+    },
+    "root": true,
+    "extends": [
+      "prettier"
+    ],
+    "plugins": [
+      "import",
+      "eslint-plugin-prettier"
+    ],
+    "parser": "@babel/eslint-parser",
+    "rules": {
+      "no-alert": 0,
+      "eslint-comments/no-unlimited-disable": 0,
+      "import/order": 2,
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 4,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }
