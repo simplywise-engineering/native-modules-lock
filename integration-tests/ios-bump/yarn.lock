@@ -217,20 +217,14 @@ minimatch@3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
-
 native-modules-lock@../../:
-  version "0.0.1"
+  version "0.0.0-development"
   dependencies:
     app-root-path "^3.0.0"
     commander "^5.0.0"
     fs-extra "^10.0.0"
     is-ci "^3.0.0"
     md5 "^2.3.0"
-    minimist "^1.2.5"
 
 p-limit@^2.2.0:
   version "2.3.0"
