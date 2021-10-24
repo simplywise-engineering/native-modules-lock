@@ -1,8 +1,21 @@
 import process from 'process';
-import test from 'ava';
+import test, { ExecutionContext } from 'ava';
 import { path as appRootPath } from 'app-root-path';
 import { exec } from './util/exec';
 const TEST_ROOT = `${appRootPath}/integration-tests`;
+
+const assertCheck = async (t: ExecutionContext<unknown>) => {
+    try {
+        const { stdout, stderr } = await exec('npx native-modules-lock check');
+        if (stderr != '') {
+            t.fail(stderr);
+        } else {
+            t.pass(stdout);
+        }
+    } catch {
+        t.pass();
+    }
+};
 
 test.before(async () => {
     process.chdir(appRootPath);
@@ -19,12 +32,7 @@ test.serial('can detect android file change', async (t) => {
     process.chdir(testDir);
 
     await exec('./runTest.sh');
-    const { stdout, stderr } = await exec('npx native-modules-lock check');
-    if (stderr == '') {
-        t.fail(stderr);
-    } else {
-        t.pass(stdout);
-    }
+    await assertCheck(t);
 });
 
 test.serial('can detect ios file change', async (t) => {
@@ -33,12 +41,7 @@ test.serial('can detect ios file change', async (t) => {
     process.chdir(testDir);
 
     await exec('./runTest.sh');
-    const { stdout, stderr } = await exec('npx native-modules-lock check');
-    if (stderr == '') {
-        t.fail(stderr);
-    } else {
-        t.pass(stdout);
-    }
+    await assertCheck(t);
 });
 
 test.serial('can detect unchanged state', async (t) => {
@@ -47,10 +50,5 @@ test.serial('can detect unchanged state', async (t) => {
     process.chdir(testDir);
 
     await exec('./runTest.sh');
-    const { stdout, stderr } = await exec('npx native-modules-lock check');
-    if (stderr != '') {
-        t.fail(stderr);
-    } else {
-        t.pass(stdout);
-    }
+    await assertCheck(t);
 });

@@ -21,11 +21,13 @@ program
                 console.log(
                     `Verified ${options.lockfile} lock state: ${value}`
                 );
+                process.exit(0);
             })
             .catch((reason) => {
                 console.error(
                     `Failed to verify ${options.lockfile} lock state: ${reason}`
                 );
+                process.exit(1);
             });
     });
 
@@ -43,11 +45,13 @@ program
                 console.log(
                     `Successfully wrote lockfile to ${options.lockfile}`
                 );
+                process.exit(0);
             })
             .catch((reason) => {
                 console.error(
                     `Failed to write lockfile to ${options.lockfile}: ${reason}`
                 );
+                process.exit(1);
             });
     });
 
